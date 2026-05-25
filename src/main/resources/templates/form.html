@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="jp" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${mode == 'CREATE'} ? '商品登録' : '商品編集'"></title>
+</head>
+<body>
+<section layout:fragment="content">
+  <div class="container">
+    <h1 class="mt-4" th:text="${mode == 'CREATE'} ? '商品登録' : '商品編集'"></h1>
+    <form
+            th:action="${mode == 'CREATE'}
+                    ? @{/shopping}
+                    : @{/account/{id}/edit(id=${fleaMarketForm.id})}"
+            method="post"
+            th:object="${fleaMarketForm}"
+            enctype="multipart/form-data"
+    >
+      <div class="form-group mt-3">
+        <label for="nameInput" class="form-label">商品名</label>
+        <input type="text"
+               id="nameInput"
+               th:field="*{name}"
+               class="form-control"
+               th:errorclass="is-invalid"
+        >
+        <span th:errors="*{name}" class="invalid-feedback"></span>
+      </div>
+
+      <div class="form-group mt-3">
+        <label for="priceInput" class="form-label">価格</label>
+        <input type="number"
+               id="priceInput"
+               th:field="*{price}"
+               class="form-control"
+               th:errorclass="is-invalid"
+        >
+        <span th:errors="*{price}" class="invalid-feedback"></span>
+      </div>
+
+      <div class="form-group mt-3">
+        <label for="descriptionInput" class="form-label">説明</label>
+        <textarea id="descriptionInput"
+                  th:field="*{description}"
+                  class="form-control"
+                  rows="10"
+                  th:errorclass="is-invalid"
+        ></textarea>
+        <span th:errors="*{description}" class="invalid-feedback"></span>
+      </div>
+
+      <div class="form-group mt-3">
+        <label for="statusInput" class="form-label">状態</label>
+        <select id="statusInput"
+                th:field="*{status}"
+                class="form-control"
+                th:errorclass="is-invalid"
+        >
+          <option value="ON_SALE">販売中</option>
+          <option value="PREPARING">準備中</option>
+        </select>
+        <span th:errors="*{status}" class="invalid-feedback"></span>
+      </div>
+
+      <div class="form-group mt-3">
+        <label for="imageFileInput" class="form-label">画像</label>
+        <input type="file"
+               id="imageFileInput"
+               th:field="*{imageFile}"
+               class="form-control"
+               th:errorclass="is-invalid"
+        >
+        <span th:errors="*{imageFile}" class="invalid-feedback"></span>
+      </div>
+
+      <div class="mt-4">
+        <button type="submit"
+                class="btn btn-primary"
+                th:text="${mode == 'CREATE'} ? '出品' : '更新'"
+        ></button>
+        <a th:href="${mode == 'CREATE'}? @{/shopping}: @{/account/listing}" class="btn btn-secondary">戻る</a>
+      </div>
+    </form>
+  </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="jp" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
+<head>
+  <meta charset="UTF-8">
+  <title>アカウント</title>
+</head>
+<body>
+<section layout:fragment="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2 bg-light vh-100 p-3">
+        <div class="list-group">
+          <a th:href="@{/account}"
+             class="list-group-item list-group-item-action">
+            マイページ
+          </a>
+          <a th:href="@{/account/listing}"
+             class="list-group-item list-group-item-action">
+            出品一覧
+          </a>
+          <a th:href="@{/account/sold-list}"
+             class="list-group-item list-group-item-action">
+            販売履歴
+          </a>
+          <a th:href="@{/account/purchases}"
+             class="list-group-item list-group-item-action">
+            購入履歴
+          </a>
+        </div>
+      </div>
+      <div class="col-md-10 p-4">
+        <h1>マイページ</h1>
+        <h2>
+          ようこそ
+          <span th:text="${username}"></span>
+          様
+        </h2>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

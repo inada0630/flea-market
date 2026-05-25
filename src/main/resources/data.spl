@@ -1,0 +1,2 @@
+INSERT INTO shopping(name,description,status) VALUES ('マウス','PCデバイス','ON_SALE')
+INSERT INTO shopping(name,description,status) VALUES ('イヤホン','音響デバイス','SOLD_OUT')

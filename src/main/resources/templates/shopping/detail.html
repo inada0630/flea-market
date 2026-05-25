@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="jp" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
+<head>
+  <meta charset="UTF-8">
+  <title>商品詳細</title>
+</head>
+<body>
+<section layout:fragment="content">
+  <div class="d-flex gap-2">
+  <div th:if="${shopping.status != 'SOLD_OUT'}">
+  <form th:action="@{/shopping/{id}/purchase(id=${shopping.id})}"
+        method="post"
+        onsubmit="return confirm('購入処理に進みますか？');"
+  >
+    <button type="submit" class="btn btn-success">購入する</button>
+  </form>
+  </div>
+    <a th:href="${from == 'purchases'}
+        ? @{/account/purchases}
+        : @{/shopping}"
+       class="btn btn-secondary">戻る</a>
+  </div>
+  <div th:object="${shopping}" class="mt-3">
+    <p>
+      <img th:src="@{'/uploads/' + *{imagePath}}" width="200">
+    </p>
+    <p th:text="*{name}"></p>
+    <p th:text="*{price}"></p>
+    <p th:text="*{username}"></p>
+    <p th:text="*{description}"></p>
+    <p th:text="*{statusLabel()}"></p>
+  </div>
+</section>
+</body>
+</html>
