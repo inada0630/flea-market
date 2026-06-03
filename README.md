@@ -70,7 +70,7 @@ Spring Boot を用いて作成したフリマアプリです。
 
 # ER図
 
-![ER図](docs/er-diagram.png)
+![ER図](docs/ER図.png)
 
 ---
 
