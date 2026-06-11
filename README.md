@@ -67,7 +67,23 @@ Spring Boot を用いて作成したフリマアプリです。
 * 価格検索
 
 ---
+# 画面イメージ
 
+## ログイン画面
+
+![ログイン画面](docs/login.png)
+
+## 商品一覧画面
+
+![商品一覧画面](docs/item-list.png)
+
+## 商品詳細画面
+
+![商品詳細画面](docs/item-detail.png)
+
+## 商品出品画面
+
+![商品出品画面](docs/item-create.png)
 # ER図
 
 ![ER図](docs/ER図.png)
